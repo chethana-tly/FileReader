@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="TOP_LEFT" spacing="10"
+      xmlns="http://javafx.com/javafx/8"
+      xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="csv_reader.ViewController">
+    <children>
+        
+        
+        <fx:define>
+            <ToggleGroup fx:id="group" />
+        </fx:define>
+        <RadioButton fx:id="radiobutton1" text="readMe_1.xml" toggleGroup="$group"></RadioButton>
+        <RadioButton fx:id="radiobutton2" text="readMe_2.xml" toggleGroup="$group"></RadioButton>
+        <RadioButton fx:id="radiobutton3" text="readMe_3.xml" toggleGroup="$group"></RadioButton>
+        <RadioButton fx:id="radiobutton4" text="readMe_4.xml" toggleGroup="$group"></RadioButton>
+        <RadioButton fx:id="radiobutton5" text="readMe_5.xml" toggleGroup="$group"></RadioButton>
+        <RadioButton fx:id="radiobutton6" text="readMe_6.xml" toggleGroup="$group"></RadioButton>
+        <Button text="Update File" fx:id="update"  GridPane.columnIndex="0" GridPane.rowIndex="2"></Button>
+        <GridPane  >
+            <children>
+
+                <TextArea GridPane.columnIndex="0" GridPane.rowIndex="1" fx:id="textarea" ></TextArea>
+            
+            </children>
+        </GridPane>
+    </children>
+    
+</VBox>
