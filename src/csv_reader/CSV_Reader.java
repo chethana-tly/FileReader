@@ -25,7 +25,7 @@ public class CSV_Reader extends Application {
 
         VBox box = loader.load();
         ViewController controller = loader.getController();
-
+  controller.setParameter(getParameters()); 
         Scene scene = new Scene(box);
         primaryStage.setTitle("File Reader");
         primaryStage.setScene(scene);

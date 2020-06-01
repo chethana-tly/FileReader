@@ -16,12 +16,12 @@
         <fx:define>
             <ToggleGroup fx:id="group" />
         </fx:define>
-        <RadioButton fx:id="radiobutton1" text="readMe_1.xml" toggleGroup="$group"></RadioButton>
-        <RadioButton fx:id="radiobutton2" text="readMe_2.xml" toggleGroup="$group"></RadioButton>
-        <RadioButton fx:id="radiobutton3" text="readMe_3.xml" toggleGroup="$group"></RadioButton>
-        <RadioButton fx:id="radiobutton4" text="readMe_4.xml" toggleGroup="$group"></RadioButton>
-        <RadioButton fx:id="radiobutton5" text="readMe_5.xml" toggleGroup="$group"></RadioButton>
-        <RadioButton fx:id="radiobutton6" text="readMe_6.xml" toggleGroup="$group"></RadioButton>
+        <RadioButton fx:id="radiobutton1"  toggleGroup="$group"></RadioButton>
+        <RadioButton fx:id="radiobutton2"  toggleGroup="$group"></RadioButton>
+        <RadioButton fx:id="radiobutton3"  toggleGroup="$group"></RadioButton>
+        <RadioButton fx:id="radiobutton4"  toggleGroup="$group"></RadioButton>
+        <RadioButton fx:id="radiobutton5"  toggleGroup="$group"></RadioButton>
+        <RadioButton fx:id="radiobutton6"  toggleGroup="$group"></RadioButton>
         <Button text="Update File" fx:id="update"  GridPane.columnIndex="0" GridPane.rowIndex="2"></Button>
         <GridPane  >
             <children>

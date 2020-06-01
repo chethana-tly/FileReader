@@ -11,8 +11,11 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Scanner;
+import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -30,7 +33,7 @@ import javafx.scene.control.ToggleGroup;
  * @author
  */
 public class ViewController implements Initializable {
-    
+
     @FXML
     public TextArea textarea;
     @FXML
@@ -47,10 +50,10 @@ public class ViewController implements Initializable {
     public RadioButton radiobutton6;
     @FXML
     public Button update;
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
         ToggleGroup group = new ToggleGroup();
         radiobutton1.setToggleGroup(group);
         radiobutton2.setToggleGroup(group);
@@ -58,138 +61,169 @@ public class ViewController implements Initializable {
         radiobutton4.setToggleGroup(group);
         radiobutton5.setToggleGroup(group);
         radiobutton6.setToggleGroup(group);
+        ArrayList filenames = new ArrayList();
         
+
+        String path = "./ReadMe";
+
+        File folder = new File(path);
+        System.out.println("PWD:" + folder);
+
+        File[] listOfFiles = folder.listFiles();
+
+        for (File listOfFile : listOfFiles) {
+            if (listOfFile.isFile()) {
+                filenames.add(listOfFile.getName());
+            }
+        }
+        if(filenames.size()>4){
+        this.radiobutton1.setText(filenames.get(0).toString());
+        this.radiobutton2.setText(filenames.get(1).toString());
+        this.radiobutton3.setText(filenames.get(2).toString());
+        this.radiobutton4.setText(filenames.get(3).toString());
+        this.radiobutton5.setText(filenames.get(4).toString());
+        this.radiobutton6.setText(filenames.get(5).toString());
+        }
+        else{
+             Alert a = new Alert(AlertType.NONE);
+                a.setAlertType(AlertType.INFORMATION);
+                a.setContentText("There must be minmum 5 files in this folder");
+                a.setHeaderText("Invalid");
+                // show the dialog 
+                a.show();
+        }
+
         radiobutton1.setOnAction(new EventHandler<ActionEvent>() {
-            
+
             public void handle(ActionEvent event) {
-                String name = radiobutton1.getText();
+                String name = path + "/" + radiobutton1.getText();
                 textarea.clear();
-                
+
                 try {
-                    File myObj = new File("C:\\Chi\\Projects\\CSV_Reader\\src\\csv_reader\\" + name);
+                    File myObj = new File(name);
                     Scanner myReader = new Scanner(myObj);
                     String content = "";
                     while (myReader.hasNextLine()) {
                         String data = myReader.nextLine();
                         content += data + "\n";
                         textarea.setText(content);
-                        
+
                     }
                     myReader.close();
                 } catch (FileNotFoundException e) {
                     System.out.println("An error occurred.");
                     e.printStackTrace();
                 }
-                
+
             }
         });
-        
+
         radiobutton2.setOnAction(new EventHandler<ActionEvent>() {
-            
+
             public void handle(ActionEvent event) {
-                String name = radiobutton2.getText();
+                String name = path + "/" + radiobutton2.getText();
                 textarea.clear();
                 try {
                     String content = "";
-                    File myObj = new File("C:\\Chi\\Projects\\CSV_Reader\\src\\csv_reader\\" + name);
+                    File myObj = new File(name);
                     Scanner myReader = new Scanner(myObj);
                     while (myReader.hasNextLine()) {
                         String data = myReader.nextLine();
                         content += data + "\n";
                         textarea.setText(content);
-                        
+
                     }
                     myReader.close();
                 } catch (FileNotFoundException e) {
                     System.out.println("An error occurred.");
                     e.printStackTrace();
                 }
-                
+
             }
         });
-        
+
         radiobutton3.setOnAction(new EventHandler<ActionEvent>() {
-            
+
             public void handle(ActionEvent event) {
-                String name = radiobutton3.getText();
+                String name = path + "/" + radiobutton3.getText();
                 textarea.clear();
                 try {
                     String content = "";
-                    File myObj = new File("C:\\Chi\\Projects\\CSV_Reader\\src\\csv_reader\\" + name);
+                    File myObj = new File(name);
                     Scanner myReader = new Scanner(myObj);
                     while (myReader.hasNextLine()) {
                         String data = myReader.nextLine();
                         content += data + "\n";
                         textarea.setText(content);
-                        
+
                     }
                     myReader.close();
                 } catch (FileNotFoundException e) {
                     System.out.println("An error occurred.");
                     e.printStackTrace();
                 }
-                
+
             }
         });
-        
+
         radiobutton4.setOnAction(new EventHandler<ActionEvent>() {
-            
+
             public void handle(ActionEvent event) {
-                String name = radiobutton4.getText();
+                String name = path + "/" + radiobutton4.getText();
                 textarea.clear();
                 try {
                     String content = "";
-                    File myObj = new File("C:\\Chi\\Projects\\CSV_Reader\\src\\csv_reader\\" + name);
+                    File myObj = new File(name);
                     Scanner myReader = new Scanner(myObj);
                     while (myReader.hasNextLine()) {
                         String data = myReader.nextLine();
                         content += data + "\n";
                         textarea.setText(content);
-                        
+
                     }
                     myReader.close();
                 } catch (FileNotFoundException e) {
                     System.out.println("An error occurred.");
                     e.printStackTrace();
                 }
-                
+
             }
         });
-        
+
         radiobutton5.setOnAction(new EventHandler<ActionEvent>() {
-            
+
             public void handle(ActionEvent event) {
-                String name = radiobutton5.getText();
+                String name = path + "/" + radiobutton5.getText();
                 textarea.clear();
                 try {
                     String content = "";
-                    File myObj = new File("C:\\Chi\\Projects\\CSV_Reader\\src\\csv_reader\\" + name);
+                    File myObj = new File(name);
                     Scanner myReader = new Scanner(myObj);
                     textarea.setText("");
                     while (myReader.hasNextLine()) {
                         String data = myReader.nextLine();
                         content += data + "\n";
                         textarea.setText(content);
-                        
+
                     }
                     myReader.close();
                 } catch (FileNotFoundException e) {
                     System.out.println("An error occurred.");
                     e.printStackTrace();
                 }
-                
+
             }
         });
-        
+
         radiobutton6.setOnAction(new EventHandler<ActionEvent>() {
-            
+
             public void handle(ActionEvent event) {
-                String name = radiobutton6.getText();
+                String name = path + "/" + radiobutton6.getText();
                 textarea.clear();
                 try {
                     String content = "";
-                    
-                    File myObj = new File("C:\\Chi\\Projects\\CSV_Reader\\src\\csv_reader\\" + name);
+
+                    File myObj = new File(name);
                     Scanner myReader = new Scanner(myObj);
                     textarea.clear();
                     while (myReader.hasNextLine()) {
@@ -203,50 +237,54 @@ public class ViewController implements Initializable {
                     System.out.println("An error occurred.");
                     e.printStackTrace();
                 }
-                
+
             }
         });
-        
+
         update.setOnAction(new EventHandler<ActionEvent>() {
-            
+
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("Updating file");
                 RadioButton selectedRadioButton = (RadioButton) group.getSelectedToggle();
-                String selectedFile = selectedRadioButton.getText();
-                
+                String selectedFile = path + "/" +selectedRadioButton.getText();
+
                 String content = "";
-                File myObj = new File("C:\\Chi\\Projects\\CSV_Reader\\src\\csv_reader\\" + selectedFile);
-                
+                File myObj = new File(selectedFile);
+
                 content = textarea.getText();
                 writeToFile(myObj, content);
                 System.out.println("Updated");
-                Alert a = new Alert(AlertType.NONE);                
-                a.setAlertType(AlertType.INFORMATION);                
+                Alert a = new Alert(AlertType.NONE);
+                a.setAlertType(AlertType.INFORMATION);
                 a.setContentText("File updated");
                 a.setHeaderText("Success");
                 // show the dialog 
-                a.show();                
-                
+                a.show();
+
             }
         });
-        
+
     }
-    
+
     public void writeToFile(File file, String data) {
         try {
             FileWriter fw = new FileWriter(file);
             BufferedWriter out = new BufferedWriter(fw);
-            
+
             out.write(data);
             out.flush();
             out.close();
-            
+
         } catch (IOException e) {
             e.printStackTrace();
-            
+
         }
-        
+
     }
-    
+
+    void setParameter(Application.Parameters parameters) {
+            //  System.out.println("PARAMS"+parameters.getUnnamed());
+    }
+
 }
